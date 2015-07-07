@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+  </head>
+  <body ng-cloak ng-app="headerChecker" ng-controller="mainCtrl">
+      <form>
+        Enter URL - http://<input type="text" ng-model="userUrl" placeholder="URL" >
+              <button ng-click="getUrlData()"> Submit </button>
+      </form>
+
+
+      <!--This displays header info-->
+      <div ng-show="headerData">
+          Status code: {{data.statusCode}}
+      </div>
+      <div ng-repeat="(key, value) in data.headers">
+          <li>{{key | capitalize: 'all'}}: {{value}}</li>
+      </div>
+
+      <!-- <ul ng-repeat="dataPoints in data">
+          <li>Alternate Protocol{{dataPoints.heaers.alternate-protocol}}</li>
+          <li>Cache Control{{dataPoints.headers.cache-control}}</li>
+          <li>Content Type: {{dataPoints.headers.content-type}}</li>
+          <li>Date: {{dataPoints.headers.date}}</li>
+          <li>Server: {{dataPoints.headers.server}}</li>
+        </ul> -->
+      <!--<pre>{{data | json}}</pre>-->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="js/capitalize.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/mainCtrl.js"></script>
+    <script src="js/mainService.js"></script>
+  </body>
+</html>
