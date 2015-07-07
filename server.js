@@ -20,11 +20,13 @@ app.get('/', function(req, res){
 
 app.post('/getter', function(req, res, err){
 console.log(req.body.url);
-    if(err){
-        console.log('not valid URL');
-    }
 
-	request.get(req.body.url).on('response', function(response){
+
+	request.get(req.body.url)
+        .on('error', function(err) {
+            res.send(err);
+        })
+        .on('response', function(response){
 		res.send(response);
 	});
 	// console.log(myData)
