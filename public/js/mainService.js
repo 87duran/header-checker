@@ -13,7 +13,7 @@ app.service('headerService', function($http){
             url: '/getter',
             data: {url: url}
         }).then(function(res){
-            console.log("got response");
+            console.log(res);
             return res;
         })
     }

@@ -16,6 +16,10 @@
           Status code: {{data.statusCode}}
           <br>
           Website: {{data.request.uri.host}}
+          <br>
+          Time: {{timeMilli}}
+          <br>
+          {{body}}
       </div>
       <div ng-repeat="(key, value) in data.headers">
           <li>{{key | capitalize: 'all'}}: {{value}}</li>

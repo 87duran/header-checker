@@ -7,6 +7,8 @@ var app = express();
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
+
+
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST');
@@ -22,16 +24,29 @@ app.post('/getter', function(req, res, err){
 console.log(req.body.url);
 
 
-	request.get(req.body.url)
-        .on('error', function(err) {
-            res.send(err);
-        })
-        .on('response', function(response){
-		res.send(response);
-	});
-	// console.log(myData)
-	// var data = myData.getUrlInfo();
-	// res.send(data);
+	//request.get({uri: req.body.url, time: true})
+     //   .on('error', function(err) {
+     //       res.send(err);
+     //   })
+     //   .on('response', function(response){
+     //       res.send(response);
+     //       console.log(elapsedTime)
+	//});
+
+
+    request({url: req.body.url, followRedirect: true, time: true,}, function(error, response, body) {
+        console.log(Object.keys(response));
+        res.send(response);
+    })
+        //.on('error', function(err) {
+        //    res.send(err);
+        //})
+        //.on('response', function(response) {
+        //
+        //})
+
+
+
 });
 
 
