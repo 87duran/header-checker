@@ -9,17 +9,15 @@ app.controller('mainCtrl', function($scope, headerService){
             headerService.getUrlInfo($scope.userUrl)
                 .then(function (res) {
                     //this checks for error denoting a bad URL
-                    console.log(res);
-                    if(res.data.code) {
+                    //console.log(res);
+                    if(res.data === "") {
                         alert("that URL was not valid")
                     } else {
                         //this gives us header info if URL is good
                         $scope.data = res.data;
-                        console.log(res);
+                            //console.log(res);
                         $scope.body = res.body;
-                        $scope.timeMilli = res.elapsedTime;
-                        $scope.objKeys = Object.keys($scope.data.headers);
-                        console.log($scope.objKeys);
+                        console.log(res.elapsedTime);
                         $scope.headerData = true;
                         $scope.userUrl = "";
                     }
