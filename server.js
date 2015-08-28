@@ -16,27 +16,21 @@ app.get('/', function(req, res){
 	res.status(200).end();
 })
 
-require('request-debug')(request, function(type, data, r){
-    var toLog = {};
-    toLog[type] = data;
-    if (!toLog.redirect) {
-        var returnData = {
-            header: toLog.response.headers
-        };
-        response.send(returnData);
-        console.log(returnData);
-    }
-
-});
-
 
 app.post('/getter', function(req, res, err){
     console.log(req.body.url);
-    request.get({url: req.body.url}, function(error, response, body) {
+    request.get({url: req.body.url, followAllRedirects: true}, function(error, response, body) {
 
+        if (err){
+            next(err);
+        }
+        var data = {"headers": response.headers};
+
+        if(response.request._redirect.redirects){
+            data.redirects = response.request._redirect.redirects;
+        }
         //console.log(response);
-        //res.send(response);
-
+        res.send(data);
 
     });
 
