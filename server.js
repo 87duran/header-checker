@@ -17,7 +17,7 @@ app.get('/', function(req, res){
 })
 
 
-app.post('/getter', function(req, res, err){
+app.post('/getter', function(req, res, ne){
     console.log(req.body.url);
     request.get({url: req.body.url, followAllRedirects: true}, function(error, response, body) {
 
