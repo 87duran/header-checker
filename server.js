@@ -21,8 +21,8 @@ app.post('/getter', function(req, res, err){
     console.log(req.body.url);
     request.get({url: req.body.url, followAllRedirects: true}, function(error, response, body) {
 
-        if (err){
-            next(err);
+        if (error){
+            res.end(error);
         }
         var data = {"headers": response.headers};
 
