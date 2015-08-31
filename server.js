@@ -14,7 +14,7 @@ app.use(function(req, res, next) {
 
 app.get('/', function(req, res){
 	res.status(200).end();
-})
+});
 
 
 app.post('/getter', function(req, res, next){
@@ -22,7 +22,7 @@ app.post('/getter', function(req, res, next){
     request.get({url: req.body.url, followAllRedirects: true}, function(error, response, body) {
 
         if (error){
-           next("Invalid Website");
+           res.send({});
             return;
         }
         var data = {"headers": response.headers};
