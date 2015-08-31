@@ -10,7 +10,7 @@ app.controller('mainCtrl', function($scope, headerService){
                 .then(function (res) {
                     //this checks for error denoting a bad URL
                     //console.log(res);
-                    if(res.data === "") {
+                    if(res.data === "Invalid URL") {
                         alert("that URL was not valid")
                     } else {
                         //this gives us header info if URL is good
