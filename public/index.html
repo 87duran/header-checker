@@ -13,15 +13,21 @@
 
       <!--This displays header info-->
       <div ng-show="headerData">
-        <div>
-            Status code: {{data.statusCode}}
-            <br>
-            Website: {{data.URL}}
-            <br>
-        </div>
-        <div ng-repeat="(key, value) in data.headers">
-            <li>{{key | capitalize: 'all'}}: {{value}}</li>
-        </div>
+          <div>
+              Status code: {{data.statusCode}}
+              <br>
+              Website: {{data.URL}}
+              <br>
+          </div>
+          <h3>Redirects</h3>
+          <div ng-repeat="redirect in data.redirects">
+              <li>{{redirect.redirectUri}} - {{redirect.statusCode}}</li>
+
+          </div>
+          <h2>Header Info</h2>
+          <div ng-repeat="(key, value) in data.headers">
+              <li>{{key | capitalize: 'all'}}: {{value}}</li>
+          </div>
       </div>
       <div ng-show="badURL">
         That URL is not Valid
