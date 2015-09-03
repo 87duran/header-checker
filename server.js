@@ -27,12 +27,16 @@ app.post('/getter', function(req, res, next){
            res.send("Invalid URL");
             return;
         }
-        var data = {"headers": response.headers};
+
+        var data = {
+            "headers": response.headers,
+            "statusCode": response.statusCode,
+            "URL": response.request.uri.href
+        };
 
         if(response.request._redirect.redirects){
             data.redirects = response.request._redirect.redirects;
         }
-        //console.log(response);
         res.send(data);
 
     });

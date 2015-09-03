@@ -13,16 +13,19 @@
 
       <!--This displays header info-->
       <div ng-show="headerData">
-          Status code: {{data.statusCode}}
-          <br>
-          Website: {{data.request.uri.host}}
-          <br>
-          Time: {{timeMilli}}
-          <br>
-          {{body}}
+        <div>
+            Status code: {{data.statusCode}}
+            <br>
+            Website: {{data.URL}}
+            <br>
+        </div>
+        <div ng-repeat="(key, value) in data.headers">
+            <li>{{key | capitalize: 'all'}}: {{value}}</li>
+        </div>
       </div>
-      <div ng-repeat="(key, value) in data.headers">
-          <li>{{key | capitalize: 'all'}}: {{value}}</li>
+      <div ng-show="badURL">
+        That URL is not Valid
+
       </div>
       
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
