@@ -18,8 +18,10 @@
               <br>
               Website: {{data.URL}}
               <br>
+              Time: {{data.time}}
+              <h3 ng-show="redirectShow">Redirects</h3>
           </div>
-          <h3>Redirects</h3>
+
           <div ng-repeat="redirect in data.redirects">
               <li>{{redirect.redirectUri}} - {{redirect.statusCode}}</li>
 

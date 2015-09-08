@@ -19,6 +19,11 @@ app.controller('mainCtrl', function($scope, headerService){
                         $scope.headerData = true;
                         $scope.badURL = false;
                         $scope.userUrl = "";
+                        if (res.data.redirects.length > 0) {
+                            $scope.redirectShow = true;
+                        } else {
+                            $scope.redirectShow = false;
+                        }
                     }
                 });
     }

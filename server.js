@@ -19,9 +19,10 @@ app.get('/', function(req, res){
 
 
 
-app.post('/getter', function(req, res, next){
+app.post('/getter', function(req, res){
     console.log(req.body.url);
-    request.get({url: req.body.url, followAllRedirects: true}, function(error, response, body) {
+
+    request.get({url: req.body.url, followAllRedirects: true, time: true}, function(error, response, body) {
 
         if (error){
            res.send("Invalid URL");
@@ -31,12 +32,13 @@ app.post('/getter', function(req, res, next){
         var data = {
             "headers": response.headers,
             "statusCode": response.statusCode,
-            "URL": response.request.uri.href
+            "URL": response.request.uri.href,
+            "time": response.request.elapsedTime
         };
-
         if(response.request._redirect.redirects){
             data.redirects = response.request._redirect.redirects;
         }
+        console.log(response);
         res.send(data);
 
     });
