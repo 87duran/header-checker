@@ -2,39 +2,64 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+      <!-- Latest compiled and minified CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
   </head>
   <body ng-cloak ng-app="headerChecker" ng-controller="mainCtrl">
-      <form>
-        Enter URL - <input type="text" ng-model="userUrl" placeholder="URL" >
-              <button ng-click="getUrlData()"> Submit </button>
-      </form>
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <img>
+            <h3>Header Inspector Tool</h3>
+            <p>Use our Header Inspector tool to see which response code your web server is returning for a requested URL.
+                This tool can provide valuable information  on the status of a requested URL. Simple type or paste the URL in
+                the box below, and then click INSPECT.</p>
+        </div>
 
+    </div>
 
-      <!--This displays header info-->
-      <div ng-show="headerData">
-          <div>
-              Status code: {{data.statusCode}}
-              <br>
-              Website: {{data.URL}}
-              <br>
-              Time: {{data.time}}
-              <h3 ng-show="redirectShow">Redirects</h3>
+      <div class="row jumbotron">
+          <form class="col-md-4 col-md-offset-4 center">
+              <p class="orange_font">Type in your URL</p>
+              <input type="text" ng-model="userUrl" placeholder="Example: http://www.yoursite.com" class="form-control">
+              <button ng-click="getUrlData()" class="btn btn-default inspect_button" align="center"> Inspect </button>
+          </form>
+      </div>
+  </div>
+
+  <!--This displays header info-->
+  <div ng-show="headerData" class="container grey">
+
+      <div class="row">
+          <div class="col-md-12 center">
+              <h3 class="orange_font">Results</h3>
           </div>
-
+      </div>
+      <div class="row">
+          <div class="col-md-12 center">
+              <h3 class="grey">{{data.URL}}</h3>
+          </div>
+      </div>
+      <div class="row grey">
+          <div class="col-md-4 col-md-offset-1 results_padded"><span class="orange_font">Status code</span> {{data.statusCode}}</div>
+          <div class="col-md-4 col-md-offset-2 results_padded"><span class="orange_font">Load Speed</span> {{data.time}} MS</div>
+      </div>
+      <div class="row">
+          <h3 ng-show="redirectShow">Redirects</h3>
           <div ng-repeat="redirect in data.redirects">
               <li>{{redirect.redirectUri}} - {{redirect.statusCode}}</li>
-
-          </div>
-          <h2>Header Info</h2>
-          <div ng-repeat="(key, value) in data.headers">
-              <li>{{key | capitalize: 'all'}}: {{value}}</li>
+              <h2>Header Info</h2>
+              <div ng-repeat="(key, value) in data.headers">
+                  <li>{{key | capitalize: 'all'}}: {{value}}</li>
+              </div>
           </div>
       </div>
       <div ng-show="badURL">
         That URL is not Valid
 
       </div>
+  </div>
       
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="js/capitalize.js"></script>
