@@ -1,18 +1,184 @@
+/*
+====== Sitewide CSS =========
+*/
+
+body {
+    margin: 3% 4.5%;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 16px;
+    color: rgb(86, 93, 94);
+}
+h1 {
+    font-size: 2em;
+    padding-top: 15px;
+    font-family: 'Bree Serif', serif;
+    color: rgb(86, 93, 94);
+}
+h2 {
+    font-size: 1.4em;
+    font-family: 'Bree Serif', serif;
+}
+ul {
+    padding-left: 1.5em;
+}
+img {
+    display: block;
+    margin:0 auto;
+}
 .center {
     text-align: center;
 }
-
-.inspect_button {
-    margin-top: 25px;
+.bottom_margin {
+    margin-bottom: 50px;
 }
+.right_padding {
+    padding-right: 25px;
+}
+/*
+====== Colors =========
+*/
 .grey {
     background-color: #e9e9e9;
     /*padding: 5px 0px;*/
 }
+.dark_grey {
+    background-color: #c4c4c4;
+}
 .orange_font {
     color: #EC5524;
+    font-weight: 700;
 }
-.results_padded {
-    padding: 5px 0px;
+.results_list {
     background-color: #fff;
 }
+
+/*
+====== Input Area =========
+*/
+
+.inspect_button {
+    display: block;
+    margin: 25px auto;
+    padding: 5px 30px;
+    border-radius: 12px;
+    background-color: #134d89;
+    font-size: 20px;
+    font-family: 'Titillium Web', sans-serif;
+    color: #fff;
+}
+.input_field {
+    font-size: 15px;
+    padding: 5px 25px;
+    border-radius: 8px;
+    text-align: center;
+    width: 75%;
+}
+.type_url {
+    color: #EC5524;
+    margin-bottom: 5px;
+    font-size: 22px;
+    font-weight: bold;
+}
+.shadow_box {
+    margin-top: 25px;
+    border: 1px solid #fff;
+    box-shadow: 0 0 10px #444444;
+}
+/*
+====== Results Area =========
+*/
+.results_col {
+    padding: 5px 0px;
+}
+.results_body {
+    font-size: 20px;
+}
+.redirects {
+    margin-top: 5px;
+}
+.bad_url {
+    font-size: 22px;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 45px;
+}
+.bottom_triangle {
+    position: relative;
+    background-color: #c4c4c4;
+    padding-bottom: 5px;
+}
+.bottom_triangle:after {
+    display: none;
+}
+/*
+====== Media Queries =========
+*/
+@media (min-width: 500px)  {
+    img {
+        float: left;
+    }
+    .input_field {
+        font-size: 25px;
+    }
+}
+@media (min-width: 900px) {
+    .input_field {
+        width: 45%;
+    }
+    .results_col {
+        background-color: #fff;
+        width: 40%;
+        margin: 3% 2.5%;
+        padding: 5px 2.5%;
+        float: left;
+    }
+    .results_list {
+        background-color: #e9e9e9;
+        padding-bottom: 25px;
+    }
+    .right_padding {
+        padding-right: 51px;
+    }
+    .redirects {
+        margin: 2.5%;
+        padding: 0px 2.5%;
+        clear: both;
+        background-color: #fff;
+    }
+    .headers {
+        margin: 2.5%;
+        padding: 0px 2.5%;
+        background-color: #fff;
+        clear: both;
+    }
+    .float_left {
+        float: left;
+        margin-top: 5px;
+        width: 125px;
+    }
+    .ng_list {
+        display: inline-block;
+        margin-top: 5px;
+        margin-left: 25px;
+    }
+    .bottom_triangle:after {
+        display: block;
+        content:'';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -25px;
+        width: 0;
+        height: 0;
+        border-top: solid 25px #c4c4c4;
+        border-left: solid 25px transparent;
+        border-right: solid 25px transparent;
+    }
+}
+@media (min-width: 1125px) {
+    .shadow_box {
+        margin-top: 50px;
+    }
+}
+
+
