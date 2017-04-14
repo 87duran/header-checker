@@ -18,7 +18,6 @@ app.get('/', function(req, res){
 
 
 
-
 app.post('/getter', function(req, res){
     console.log(req.body.url);
 
